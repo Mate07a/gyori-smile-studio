@@ -11,6 +11,12 @@ import Shop from "./pages/Shop";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
+import GDPR from "./pages/GDPR";
+import ASZF from "./pages/ASZF";
+import SafetyDataSheets from "./pages/SafetyDataSheets";
+import Videos from "./pages/Videos";
+import Partners from "./pages/Partners";
+import Catalogs from "./pages/Catalogs";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +37,12 @@ const App = () => (
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/gdpr" element={<GDPR />} />
+                <Route path="/aszf" element={<ASZF />} />
+                <Route path="/safety-data-sheets" element={<SafetyDataSheets />} />
+                <Route path="/videos" element={<Videos />} />
+                <Route path="/partners" element={<Partners />} />
+                <Route path="/catalogs" element={<Catalogs />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

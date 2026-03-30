@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Printer } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -16,9 +16,27 @@ const Footer = () => {
                 Medi-Cont
               </span>
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Győr vezető fogászati szaküzlete. Prémium minőségű fogászati eszközök és anyagok forgalmazása 2005 óta.
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              Győr vezető fogászati szaküzlete. Prémium minőségű fogászati eszközök és anyagok forgalmazása.
             </p>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+                H-9024 Győr, Hold u. 12.
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone className="h-4 w-4 shrink-0 text-primary" />
+                (06 96) 516 360
+              </li>
+              <li className="flex items-center gap-2">
+                <Printer className="h-4 w-4 shrink-0 text-primary" />
+                +36-96/516-365
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail className="h-4 w-4 shrink-0 text-primary" />
+                info@medi-cont.hu
+              </li>
+            </ul>
           </div>
 
           {/* Quick links */}
@@ -27,6 +45,9 @@ const Footer = () => {
             <ul className="space-y-2.5">
               {[
                 { to: "/shop", label: "Webáruház" },
+                { to: "/partners", label: "Partnerek" },
+                { to: "/catalogs", label: "Katalógusok" },
+                { to: "/videos", label: "Videók" },
                 { to: "/about", label: "Rólunk" },
                 { to: "/contact", label: "Kapcsolat" },
               ].map((link) => (
@@ -39,35 +60,44 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Dokumentumok */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4 text-base" style={{ fontFamily: "'Playfair Display', serif" }}>Elérhetőség</h4>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
-                9024 Győr, Fő utca 12.
-              </li>
-              <li className="flex items-center gap-2.5 text-sm text-muted-foreground">
-                <Phone className="h-4 w-4 shrink-0 text-primary" />
-                +36 96 123 456
-              </li>
-              <li className="flex items-center gap-2.5 text-sm text-muted-foreground">
-                <Mail className="h-4 w-4 shrink-0 text-primary" />
-                info@medicont.hu
-              </li>
+            <h4 className="font-semibold text-foreground mb-4 text-base" style={{ fontFamily: "'Playfair Display', serif" }}>Dokumentumok</h4>
+            <ul className="space-y-2.5">
+              {[
+                { to: "/gdpr", label: "GDPR – Adatkezelési szabályzat" },
+                { to: "/aszf", label: "Általános Szerződési Feltételek" },
+                { to: "/safety-data-sheets", label: "Biztonsági adatlapok" },
+              ].map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Hours */}
+          {/* Hours & Sopron */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4 text-base" style={{ fontFamily: "'Playfair Display', serif" }}>Nyitvatartás</h4>
-            <ul className="space-y-2.5 text-sm text-muted-foreground">
+            <h4 className="font-semibold text-foreground mb-4 text-base" style={{ fontFamily: "'Playfair Display', serif" }}>Nyitvatartás – Győr</h4>
+            <ul className="space-y-2.5 text-sm text-muted-foreground mb-6">
               <li className="flex items-center gap-2.5">
                 <Clock className="h-4 w-4 shrink-0 text-primary" />
-                H-P: 8:00 – 17:00
+                H-P: 8:00 – 16:00
               </li>
-              <li className="pl-6">Szo: 9:00 – 13:00</li>
-              <li className="pl-6">V: Zárva</li>
+            </ul>
+            <h4 className="font-semibold text-foreground mb-3 text-base" style={{ fontFamily: "'Playfair Display', serif" }}>Sopron</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+                H-9400 Sopron, Móricz Zs. u. 1-3.
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone className="h-4 w-4 shrink-0 text-primary" />
+                +36-99/523-170
+              </li>
+              <li className="italic text-xs">Jelenleg ZÁRVA, keresse győri üzletünket.</li>
             </ul>
           </div>
         </div>
