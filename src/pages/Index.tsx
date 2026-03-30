@@ -21,7 +21,7 @@ const Index = () => {
               Prémium fogászati <span className="text-primary">eszközök</span> és anyagok
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-lg">
-              Több mint 18 éve szolgáljuk ki Győr és környéke fogorvosait a legmagasabb minőségű fogászati termékekkel.
+              Több mint 25 éve szolgáljuk ki Győr és környéke fogorvosait a legmagasabb minőségű fogászati termékekkel.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link to="/shop">
@@ -38,7 +38,6 @@ const Index = () => {
             </div>
           </div>
         </div>
-        {/* Decorative elements */}
         <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
         <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
       </section>
@@ -48,9 +47,9 @@ const Index = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
-              { icon: Truck, title: "Ingyenes szállítás", desc: "50.000 Ft felett" },
+              { icon: Truck, title: "Ingyenes szállítás", desc: "40.000 Ft felett" },
               { icon: Shield, title: "Garancia", desc: "Minden termékre" },
-              { icon: HeadphonesIcon, title: "Szakértői támogatás", desc: "H-P 8:00–17:00" },
+              { icon: HeadphonesIcon, title: "Szakértői támogatás", desc: "H-P 8:00–16:00" },
             ].map((item) => (
               <div key={item.title} className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
@@ -101,7 +100,7 @@ const Index = () => {
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredProducts.map((product) => (
+            {featuredProducts.slice(0, 4).map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
