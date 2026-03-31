@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import mcLogo from "@/assets/mc-logo.png";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,7 +18,6 @@ const Navbar = () => {
   const location = useLocation();
 
   const mainLinks = [
-    { to: "/", label: "Főoldal" },
     { to: "/shop", label: "Webáruház" },
     { to: "/partners", label: "Partnerek" },
     { to: "/about", label: "Rólunk" },
@@ -27,9 +27,6 @@ const Navbar = () => {
   const moreLinks = [
     { to: "/catalogs", label: "Katalógusok" },
     { to: "/videos", label: "Videók" },
-    { to: "/safety-data-sheets", label: "Biztonsági adatlapok" },
-    { to: "/gdpr", label: "GDPR" },
-    { to: "/aszf", label: "ÁSZF" },
   ];
 
   const allMobileLinks = [...mainLinks, ...moreLinks];
@@ -42,9 +39,7 @@ const Navbar = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold text-lg">
-              M
-            </div>
+            <img src={mcLogo} alt="Medi-Cont logo" className="h-10 w-10 object-contain" />
             <div className="hidden sm:block">
               <span className="text-lg font-bold text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>
                 Medi-Cont
