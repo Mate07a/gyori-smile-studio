@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Truck, Shield, HeadphonesIcon } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
-import { products, categories } from "@/data/products";
+import { products, categoryTree } from "@/data/products";
 
 const Index = () => {
   const featuredProducts = products.filter((p) => p.featured);
