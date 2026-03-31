@@ -2,6 +2,7 @@ export interface Product {
   id: string;
   name: string;
   category: string;
+  subcategory: string;
   type: "anyag" | "gep";
   manufacturer: string;
   price: number;
@@ -12,39 +13,125 @@ export interface Product {
   featured?: boolean;
 }
 
-export const categories = [
-  { id: "instruments", name: "Műszerek", icon: "🔧" },
-  { id: "materials", name: "Anyagok", icon: "🧪" },
-  { id: "hygiene", name: "Higiénia", icon: "🧴" },
-  { id: "equipment", name: "Gépek & Berendezések", icon: "⚙️" },
-  { id: "disposables", name: "Egyszer használatos", icon: "🧤" },
-  { id: "orthodontics", name: "Fogszabályozás", icon: "😁" },
+export interface SubCategory {
+  id: string;
+  name: string;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+  type: "gep" | "anyag";
+  subcategories: SubCategory[];
+}
+
+export const categoryTree: Category[] = [
+  {
+    id: "gepek",
+    name: "Gépek",
+    type: "gep",
+    subcategories: [
+      { id: "autoklavok", name: "Autoklávok" },
+      { id: "depuratorok", name: "Depurátorok" },
+      { id: "elektrokauter", name: "Elektrokauter" },
+      { id: "endodontiai-kisgepek", name: "Endodontiai kisgépek" },
+      { id: "fotopolimerizacios-lampak", name: "Fotopolimerizációs lámpák" },
+      { id: "kezeloegysegek", name: "Kezelőegységek" },
+      { id: "kisgepek-kiegeszitok", name: "Kisgépek, kiegészítők" },
+      { id: "lezerek", name: "Lézerek" },
+      { id: "rontgen", name: "Röntgen" },
+      { id: "szajsebeszeti-gepek", name: "Szájsebészeti gépek" },
+      { id: "mennyezeti-lampak", name: "Mennyezeti lámpák" },
+    ],
+  },
+  {
+    id: "anyagok",
+    name: "Anyagok",
+    type: "anyag",
+    subcategories: [
+      { id: "egyszerhasznalatos", name: "Egyszerhasználatos" },
+      { id: "fertotlenites-tisztitas", name: "Fertőtlenítés tisztítás" },
+      { id: "forgoeszkozok", name: "Forgóeszközök" },
+      { id: "kezimuszerek", name: "Kéziműszerek" },
+      { id: "lenyomat-anyagok", name: "Lenyomat anyagok" },
+      { id: "tomoanyagok", name: "Tömőanyagok" },
+      { id: "endodoncia", name: "Endodoncia" },
+    ],
+  },
 ];
 
+// Flat categories for backward compat
+export const categories = categoryTree.flatMap((cat) =>
+  cat.subcategories.map((sub) => ({
+    id: sub.id,
+    name: sub.name,
+    parentId: cat.id,
+    type: cat.type,
+  }))
+);
+
 export const manufacturers = [
-  "3M",
+  "Akzenta",
+  "AMS",
   "Anthogyr",
-  "B.Braun",
-  "Chirana Medical",
+  "Biolase",
+  "BODE",
+  "Carlo De Giorgi",
+  "Cerkamed",
+  "Chirana",
+  "Coltene",
+  "D-TEC",
+  "DC Dental Central",
+  "DentalFilm",
+  "Dentomit",
+  "Dentsply Maillefer",
   "Detax",
-  "Ecolab",
+  "Dorident",
+  "Ekom",
+  "Enbio",
   "Euronda",
+  "EVE",
+  "Hager & Werken",
   "Hahnenkratt",
+  "Hammacher",
+  "Jota",
   "Kenda",
+  "Kerr-Hawe",
+  "Kulzer",
   "Larident",
+  "Lascod",
+  "Major",
   "Mectron",
+  "Medal",
+  "Medency",
   "Medesy",
+  "Medi-Cont",
+  "Mercator",
+  "Microbrush",
+  "Mocom",
+  "New Life Radiology",
+  "Newtom",
+  "Premium Plus",
   "Schülke",
   "Sempermed",
-  "Ultradent",
+  "Tecnomed",
+  "Uniray",
+  "Vannini",
+  "Wipak",
   "Woodpecker",
+  "3M",
+  "B.Braun",
+  "Ecolab",
+  "Dr. Schumacher",
+  "Ultradent",
 ];
 
 export const products: Product[] = [
   {
     id: "1",
     name: "Fogászati tükör szett (5 db)",
-    category: "instruments",
+    category: "kezimuszerek",
+    subcategory: "kezimuszerek",
     type: "anyag",
     manufacturer: "Medesy",
     price: 12500,
@@ -56,7 +143,8 @@ export const products: Product[] = [
   {
     id: "2",
     name: "Kompozit tömőanyag készlet",
-    category: "materials",
+    category: "tomoanyagok",
+    subcategory: "tomoanyagok",
     type: "anyag",
     manufacturer: "3M",
     price: 34900,
@@ -69,7 +157,8 @@ export const products: Product[] = [
   {
     id: "3",
     name: "Gigasept Instru AF fertőtlenítő 5L",
-    category: "hygiene",
+    category: "fertotlenites-tisztitas",
+    subcategory: "fertotlenites-tisztitas",
     type: "anyag",
     manufacturer: "Schülke",
     price: 8900,
@@ -80,7 +169,8 @@ export const products: Product[] = [
   {
     id: "4",
     name: "LED polimerizációs lámpa",
-    category: "equipment",
+    category: "fotopolimerizacios-lampak",
+    subcategory: "fotopolimerizacios-lampak",
     type: "gep",
     manufacturer: "Woodpecker",
     price: 89000,
@@ -93,7 +183,8 @@ export const products: Product[] = [
   {
     id: "5",
     name: "Latex kesztyű (100 db)",
-    category: "disposables",
+    category: "egyszerhasznalatos",
+    subcategory: "egyszerhasznalatos",
     type: "anyag",
     manufacturer: "Sempermed",
     price: 4500,
@@ -104,7 +195,8 @@ export const products: Product[] = [
   {
     id: "6",
     name: "Ortodonciai bracket szett",
-    category: "orthodontics",
+    category: "kezimuszerek",
+    subcategory: "kezimuszerek",
     type: "anyag",
     manufacturer: "Ultradent",
     price: 28000,
@@ -115,7 +207,8 @@ export const products: Product[] = [
   {
     id: "7",
     name: "Fogászati szonda készlet",
-    category: "instruments",
+    category: "kezimuszerek",
+    subcategory: "kezimuszerek",
     type: "anyag",
     manufacturer: "Medesy",
     price: 15800,
@@ -126,7 +219,8 @@ export const products: Product[] = [
   {
     id: "8",
     name: "Lenyomatanyag alginát 1kg",
-    category: "materials",
+    category: "lenyomat-anyagok",
+    subcategory: "lenyomat-anyagok",
     type: "anyag",
     manufacturer: "Detax",
     price: 6200,
@@ -138,7 +232,8 @@ export const products: Product[] = [
   {
     id: "9",
     name: "Mikrozid fertőtlenítő kendő",
-    category: "hygiene",
+    category: "fertotlenites-tisztitas",
+    subcategory: "fertotlenites-tisztitas",
     type: "anyag",
     manufacturer: "Schülke",
     price: 3200,
@@ -149,7 +244,8 @@ export const products: Product[] = [
   {
     id: "10",
     name: "Ultrahangos depurátor",
-    category: "equipment",
+    category: "depuratorok",
+    subcategory: "depuratorok",
     type: "gep",
     manufacturer: "Mectron",
     price: 145000,
@@ -160,7 +256,8 @@ export const products: Product[] = [
   {
     id: "11",
     name: "Szájmaszk (50 db)",
-    category: "disposables",
+    category: "egyszerhasznalatos",
+    subcategory: "egyszerhasznalatos",
     type: "anyag",
     manufacturer: "B.Braun",
     price: 2800,
@@ -171,7 +268,8 @@ export const products: Product[] = [
   {
     id: "12",
     name: "Retainer drót tekercs",
-    category: "orthodontics",
+    category: "kezimuszerek",
+    subcategory: "kezimuszerek",
     type: "anyag",
     manufacturer: "Hahnenkratt",
     price: 9500,
@@ -182,7 +280,8 @@ export const products: Product[] = [
   {
     id: "13",
     name: "Scotchbond Universal",
-    category: "materials",
+    category: "tomoanyagok",
+    subcategory: "tomoanyagok",
     type: "anyag",
     manufacturer: "3M",
     price: 18500,
@@ -194,7 +293,8 @@ export const products: Product[] = [
   {
     id: "14",
     name: "Desderman Pure kézfertőtlenítő",
-    category: "hygiene",
+    category: "fertotlenites-tisztitas",
+    subcategory: "fertotlenites-tisztitas",
     type: "anyag",
     manufacturer: "Schülke",
     price: 4200,
@@ -205,7 +305,8 @@ export const products: Product[] = [
   {
     id: "15",
     name: "Incidin Liquid fertőtlenítő",
-    category: "hygiene",
+    category: "fertotlenites-tisztitas",
+    subcategory: "fertotlenites-tisztitas",
     type: "anyag",
     manufacturer: "Ecolab",
     price: 5600,
@@ -216,7 +317,8 @@ export const products: Product[] = [
   {
     id: "16",
     name: "Descosept AF fertőtlenítő kendő",
-    category: "hygiene",
+    category: "fertotlenites-tisztitas",
+    subcategory: "fertotlenites-tisztitas",
     type: "anyag",
     manufacturer: "Dr. Schumacher",
     price: 3800,
@@ -227,7 +329,8 @@ export const products: Product[] = [
   {
     id: "17",
     name: "Piezosurgery Touch készülék",
-    category: "equipment",
+    category: "szajsebeszeti-gepek",
+    subcategory: "szajsebeszeti-gepek",
     type: "gep",
     manufacturer: "Mectron",
     price: 1250000,
@@ -240,7 +343,8 @@ export const products: Product[] = [
   {
     id: "18",
     name: "Ketac Cem üvegionomer cement",
-    category: "materials",
+    category: "tomoanyagok",
+    subcategory: "tomoanyagok",
     type: "anyag",
     manufacturer: "3M",
     price: 12800,
@@ -251,7 +355,8 @@ export const products: Product[] = [
   {
     id: "19",
     name: "Euronda Autoclave E9",
-    category: "equipment",
+    category: "autoklavok",
+    subcategory: "autoklavok",
     type: "gep",
     manufacturer: "Euronda",
     price: 890000,
@@ -262,7 +367,8 @@ export const products: Product[] = [
   {
     id: "20",
     name: "Kenda polírozó gumi készlet",
-    category: "instruments",
+    category: "forgoeszkozok",
+    subcategory: "forgoeszkozok",
     type: "anyag",
     manufacturer: "Kenda",
     price: 7800,
