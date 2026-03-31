@@ -40,7 +40,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <img src={mcLogo} alt="Medi-Cont logo" className="h-10 w-10 object-contain" />
-            <div className="hidden sm:block">
+            <div>
               <span className="text-lg font-bold text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>
                 Medi-Cont
               </span>
