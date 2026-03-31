@@ -86,9 +86,11 @@ const Cart = () => {
               <span>Összesen</span>
               <span className="text-primary">{formatPrice(totalPrice + (totalPrice >= 50000 ? 0 : 1500))}</span>
             </div>
-            <Button className="w-full" size="lg" onClick={() => toast.info("A fizetési folyamat hamarosan elérhető!")}>
-              Megrendelés
-            </Button>
+            <Link to="/checkout">
+              <Button className="w-full" size="lg">
+                Megrendelés
+              </Button>
+            </Link>
             <Button variant="ghost" size="sm" className="w-full text-muted-foreground" onClick={() => { clearCart(); toast.info("Kosár kiürítve"); }}>
               Kosár kiürítése
             </Button>

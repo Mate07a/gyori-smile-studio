@@ -6,18 +6,18 @@ interface Video {
 }
 
 const videos: Video[] = [
-  { title: "25 éves a győri Medi-Cont Kft.", embedId: "dQw4w9WgXcQ" },
-  { title: "Mectron MT-Bone - Technical Presentation", embedId: "dQw4w9WgXcQ" },
-  { title: "Mectron COMBI Touch - Assembly and Maintenance", embedId: "dQw4w9WgXcQ" },
-  { title: "Piezosurgery Touch bemutató", embedId: "dQw4w9WgXcQ" },
-  { title: "Euronda E9 Autoklláv kezelési útmutató", embedId: "dQw4w9WgXcQ" },
-  { title: "Woodpecker LED lámpa teszt", embedId: "dQw4w9WgXcQ" },
-  { title: "3M Scotchbond alkalmazási technika", embedId: "dQw4w9WgXcQ" },
-  { title: "Fogászati sterilizálás alapjai", embedId: "dQw4w9WgXcQ" },
-  { title: "NewTom CBCT röntgen bemutató", embedId: "dQw4w9WgXcQ" },
-  { title: "Ultrahangos fogkő-eltávolítás", embedId: "dQw4w9WgXcQ" },
-  { title: "Digitális lenyomatvétel", embedId: "dQw4w9WgXcQ" },
-  { title: "Fogászati higiéniai protokoll", embedId: "dQw4w9WgXcQ" },
+  { title: "Medi-Cont Kft.", embedId: "m9dYCSgCZwQ" },
+  { title: "Mectron new MT-Bone", embedId: "ST8BoQRUvwQ" },
+  { title: "Mectron Combi touch", embedId: "f3fO7foGoxE" },
+  { title: "Mocom Thetys H10 Plus", embedId: "QGLjzKKCGVQ" },
+  { title: "Mocom Tethys H10 + HMD", embedId: "bRFRQelYnZo" },
+  { title: "Medency PRIMO", embedId: "6VKeRKD25r4" },
+  { title: "Medency TRIPOLO", embedId: "q9D4KMFFvIg" },
+  { title: "NewTom VG-ONE", embedId: "XByR_CuUggI" },
+  { title: "NewTom GO 2D/3D CEPH", embedId: "oCpn6bhOryQ" },
+  { title: "NewTom GianoHR", embedId: "dNOxLbtylcE" },
+  { title: "NewTom 7G", embedId: "BzY7k1SxBx8" },
+  { title: "NewTom VGi evo", embedId: "B8qqi6BncDA" },
 ];
 
 const Videos = () => {

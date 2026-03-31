@@ -11,6 +11,7 @@ import Shop from "./pages/Shop";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 import GDPR from "./pages/GDPR";
 import ASZF from "./pages/ASZF";
 import SafetyDataSheets from "./pages/SafetyDataSheets";
@@ -37,6 +38,7 @@ const App = () => (
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout" element={<Checkout />} />
                 <Route path="/gdpr" element={<GDPR />} />
                 <Route path="/aszf" element={<ASZF />} />
                 <Route path="/safety-data-sheets" element={<SafetyDataSheets />} />

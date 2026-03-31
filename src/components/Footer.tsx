@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail, Clock, Printer } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Printer, Facebook, Youtube } from "lucide-react";
+import mcLogo from "@/assets/mc-logo.png";
 
 const Footer = () => {
   return (
@@ -8,14 +9,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold text-lg">
-                M
-              </div>
+            <Link to="/" className="flex items-center gap-2 mb-4">
+              <img src={mcLogo} alt="Medi-Cont logo" className="h-9 w-9 object-contain" />
               <span className="text-lg font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>
                 Medi-Cont
               </span>
-            </div>
+            </Link>
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">
               Győr vezető fogászati szaküzlete. Prémium minőségű fogászati eszközök és anyagok forgalmazása.
             </p>
@@ -37,6 +36,25 @@ const Footer = () => {
                 info@medi-cont.hu
               </li>
             </ul>
+            {/* Social links */}
+            <div className="flex items-center gap-3 mt-4">
+              <a
+                href="https://www.facebook.com/medicontkft/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+              >
+                <Facebook className="h-4 w-4" />
+              </a>
+              <a
+                href="https://www.youtube.com/user/medicontkft"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+              >
+                <Youtube className="h-4 w-4" />
+              </a>
+            </div>
           </div>
 
           {/* Quick links */}

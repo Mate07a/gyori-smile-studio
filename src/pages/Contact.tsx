@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { MapPin, Phone, Mail, Clock, Printer } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Printer, Facebook, Youtube } from "lucide-react";
 import { toast } from "sonner";
 import { useState } from "react";
 
@@ -28,37 +28,57 @@ const Contact = () => {
       </div>
 
       <div className="grid lg:grid-cols-2 gap-10">
-        {/* Form */}
-        <Card>
-          <CardContent className="p-6">
-            <h2 className="text-xl font-semibold text-foreground mb-6">Írjon nekünk</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Név</Label>
-                  <Input id="name" required placeholder="Dr. Kiss Péter" />
+        {/* Left column: Form + Szerviz */}
+        <div className="space-y-6">
+          <Card>
+            <CardContent className="p-6">
+              <h2 className="text-xl font-semibold text-foreground mb-6">Írjon nekünk</h2>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Név</Label>
+                    <Input id="name" required placeholder="Dr. Kiss Péter" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email">E-mail</Label>
+                    <Input id="email" type="email" required placeholder="peter@rendelo.hu" />
+                  </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email">E-mail</Label>
-                  <Input id="email" type="email" required placeholder="peter@rendelo.hu" />
+                  <Label htmlFor="subject">Tárgy</Label>
+                  <Input id="subject" required placeholder="Árajánlat kérés" />
                 </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="subject">Tárgy</Label>
-                <Input id="subject" required placeholder="Árajánlat kérés" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="message">Üzenet</Label>
-                <Textarea id="message" required rows={5} placeholder="Miben segíthetünk?" />
-              </div>
-              <Button type="submit" className="w-full" disabled={sending}>
-                {sending ? "Küldés..." : "Üzenet küldése"}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
+                <div className="space-y-2">
+                  <Label htmlFor="message">Üzenet</Label>
+                  <Textarea id="message" required rows={5} placeholder="Miben segíthetünk?" />
+                </div>
+                <Button type="submit" className="w-full" disabled={sending}>
+                  {sending ? "Küldés..." : "Üzenet küldése"}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
 
-        {/* Info */}
+          {/* Szerviz */}
+          <Card>
+            <CardContent className="p-6 space-y-5">
+              <h2 className="text-xl font-semibold text-foreground">Szerviz</h2>
+              <div className="space-y-3 text-sm text-muted-foreground">
+                <div>
+                  <p className="font-medium text-foreground">Vadász Dániel</p>
+                  <p>Mobil: +36-30/352-3529</p>
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">Takáts Imre</p>
+                  <p>Mobil: +36-30/551-0126</p>
+                </div>
+                <p>E-mail: <a href="mailto:szerviz@medi-cont.hu" className="text-primary hover:underline">szerviz@medi-cont.hu</a></p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Right column: Győr + Sopron */}
         <div className="space-y-6">
           {/* Győr */}
           <Card>
@@ -82,6 +102,25 @@ const Contact = () => {
                 </div>
               ))}
               <p className="text-sm text-muted-foreground">Web: <a href="https://www.medi-cont.hu" className="text-primary hover:underline">www.medi-cont.hu</a></p>
+              {/* Social */}
+              <div className="flex items-center gap-3 pt-2">
+                <a
+                  href="https://www.facebook.com/medicontkft/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                >
+                  <Facebook className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://www.youtube.com/user/medicontkft"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                >
+                  <Youtube className="h-4 w-4" />
+                </a>
+              </div>
             </CardContent>
           </Card>
 
@@ -107,37 +146,6 @@ const Contact = () => {
               <p className="text-sm text-muted-foreground">Web: <a href="https://www.medi-cont.hu" className="text-primary hover:underline">www.medi-cont.hu</a></p>
               <p className="text-sm text-muted-foreground italic">Nyitvatartás: Jelenleg ZÁRVA, keresse győri üzletünket.</p>
             </CardContent>
-          </Card>
-
-          {/* Szerviz */}
-          <Card>
-            <CardContent className="p-6 space-y-5">
-              <h2 className="text-xl font-semibold text-foreground">Szerviz</h2>
-              <div className="space-y-3 text-sm text-muted-foreground">
-                <div>
-                  <p className="font-medium text-foreground">Vadász Dániel</p>
-                  <p>Mobil: +36-30/352-3529</p>
-                </div>
-                <div>
-                  <p className="font-medium text-foreground">Takáts Imre</p>
-                  <p>Mobil: +36-30/551-0126</p>
-                </div>
-                <p>E-mail: <a href="mailto:szerviz@medi-cont.hu" className="text-primary hover:underline">szerviz@medi-cont.hu</a></p>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Map */}
-          <Card className="overflow-hidden">
-            <div className="aspect-video bg-muted">
-              <iframe
-                title="Medi-Cont Győr"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2685.5!2d17.6285!3d47.6835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476bbf39a21c1e63%3A0x5b0c4c0e1a2b3c4d!2sHold+u.+12%2C+Gy%C5%91r%2C+9024!5e0!3m2!1shu!2shu!4v1"
-                className="w-full h-full border-0"
-                allowFullScreen
-                loading="lazy"
-              />
-            </div>
           </Card>
         </div>
       </div>
