@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Truck, Shield, HeadphonesIcon } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
-import { products, categories } from "@/data/products";
+import { products, categoryTree } from "@/data/products";
 
 const Index = () => {
   const featuredProducts = products.filter((p) => p.featured);
@@ -71,13 +71,14 @@ const Index = () => {
           <h2 className="text-3xl font-bold text-foreground mb-3">Termékkategóriák</h2>
           <p className="text-muted-foreground">Válasszon a széleskörű kínálatunkból</p>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {categories.map((cat) => (
-            <Link key={cat.id} to={`/shop?category=${cat.id}`}>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          {categoryTree.map((cat) => (
+            <Link key={cat.id} to={`/shop?type=${cat.type}`}>
               <Card className="hover:shadow-md hover:border-primary/30 transition-all duration-300 cursor-pointer h-full">
                 <CardContent className="flex flex-col items-center justify-center p-5 text-center gap-2">
-                  <span className="text-3xl">{cat.icon}</span>
+                  <span className="text-3xl">{cat.type === "gep" ? "⚙️" : "🧪"}</span>
                   <span className="text-sm font-medium text-foreground">{cat.name}</span>
+                  <span className="text-xs text-muted-foreground">{cat.subcategories.length} alkategória</span>
                 </CardContent>
               </Card>
             </Link>
