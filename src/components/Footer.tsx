@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Clock, Printer, Facebook, Youtube } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 import mcLogo from "@/assets/mc-logo.png";
 
 const Footer = () => {
   return (
     <footer className="border-t bg-card mt-auto">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
+          <div>
             <Link to="/" className="flex items-center gap-2 mb-3">
               <img src={mcLogo} alt="Medi-Cont logo" className="h-9 w-9 object-contain" />
               <span className="text-lg font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -48,10 +49,10 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick links + Documents combined on mobile */}
+          {/* Gyors linkek */}
           <div>
             <h4 className="font-semibold text-foreground mb-2 sm:mb-4 text-sm" style={{ fontFamily: "'Playfair Display', serif" }}>Gyors linkek</h4>
-            <ul className="space-y-1.5 sm:space-y-2.5">
+            <ul className="space-y-1.5 sm:space-y-2">
               {[
                 { to: "/shop", label: "Webáruház" },
                 { to: "/partners", label: "Partnerek" },
@@ -69,10 +70,10 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Dokumentumok + Hours */}
+          {/* Dokumentumok */}
           <div>
             <h4 className="font-semibold text-foreground mb-2 sm:mb-4 text-sm" style={{ fontFamily: "'Playfair Display', serif" }}>Dokumentumok</h4>
-            <ul className="space-y-1.5 sm:space-y-2.5 mb-4">
+            <ul className="space-y-1.5 sm:space-y-2">
               {[
                 { to: "/gdpr", label: "GDPR – Adatkezelési szabályzat" },
                 { to: "/aszf", label: "Általános Szerződési Feltételek" },
@@ -85,17 +86,33 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-
-            <h4 className="font-semibold text-foreground mb-2 text-sm" style={{ fontFamily: "'Playfair Display', serif" }}>Nyitvatartás – Győr</h4>
-            <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              <Clock className="h-3.5 w-3.5 shrink-0 text-primary" />
-              H-P: 8:00 – 16:00
-            </p>
           </div>
 
-          {/* Sopron */}
-          <div className="col-span-2 sm:col-span-1">
-            <h4 className="font-semibold text-foreground mb-2 sm:mb-4 text-sm" style={{ fontFamily: "'Playfair Display', serif" }}>Sopron</h4>
+          {/* Nyitvatartás Győr + Sopron */}
+          <div>
+            <h4 className="font-semibold text-foreground mb-2 sm:mb-4 text-sm" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Nyitvatartás – Győr
+            </h4>
+            <ul className="space-y-1.5 text-xs text-muted-foreground">
+              <li className="flex items-center gap-1.5">
+                <MapPin className="h-3.5 w-3.5 shrink-0 text-primary" />
+                H-9024 Győr, Hold u. 12.
+              </li>
+              <li className="flex items-center gap-1.5">
+                <Phone className="h-3.5 w-3.5 shrink-0 text-primary" />
+                (06 96) 516 360
+              </li>
+              <li className="flex items-center gap-1.5">
+                <Clock className="h-3.5 w-3.5 shrink-0 text-primary" />
+                H-P: 8:00 – 16:00
+              </li>
+            </ul>
+
+            <Separator className="my-3" />
+
+            <h4 className="font-semibold text-foreground mb-2 text-sm" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Sopron
+            </h4>
             <ul className="space-y-1.5 text-xs text-muted-foreground">
               <li className="flex items-center gap-1.5">
                 <MapPin className="h-3.5 w-3.5 shrink-0 text-primary" />
