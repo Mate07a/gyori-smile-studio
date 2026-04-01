@@ -29,11 +29,12 @@ const Shop = () => {
   const [searchParams] = useSearchParams();
   const manufacturerParam = searchParams.get("manufacturer") || "";
   const typeParam = searchParams.get("type") || "";
+  const discountParam = searchParams.get("discount") === "true";
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState<SortOption>("default");
   const maxPrice = Math.max(...products.map((p) => p.price));
   const [priceRange, setPriceRange] = useState<[number, number]>([0, maxPrice]);
-  const [showDiscountOnly, setShowDiscountOnly] = useState(false);
+  const [showDiscountOnly, setShowDiscountOnly] = useState(discountParam);
   const [typeFilter, setTypeFilter] = useState<"all" | "anyag" | "gep">(
     typeParam === "gep" || typeParam === "anyag" ? typeParam : "all"
   );
