@@ -71,7 +71,7 @@ const Index = () => {
           <h2 className="text-3xl font-bold text-foreground mb-3">Termékkategóriák</h2>
           <p className="text-muted-foreground">Válasszon a széleskörű kínálatunkból</p>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-xl mx-auto">
           {categoryTree.map((cat) => (
             <Link key={cat.id} to={`/shop?type=${cat.type}`}>
               <Card className="hover:shadow-md hover:border-primary/30 transition-all duration-300 cursor-pointer h-full">
@@ -83,6 +83,15 @@ const Index = () => {
               </Card>
             </Link>
           ))}
+          <Link to="/shop?discount=true">
+            <Card className="hover:shadow-md hover:border-primary/30 transition-all duration-300 cursor-pointer h-full">
+              <CardContent className="flex flex-col items-center justify-center p-5 text-center gap-2">
+                <span className="text-3xl">🏷️</span>
+                <span className="text-sm font-medium text-foreground">Akciós termékek</span>
+                <span className="text-xs text-muted-foreground">Kedvezményes árak</span>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
       </section>
 

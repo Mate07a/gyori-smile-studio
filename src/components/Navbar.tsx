@@ -1,35 +1,24 @@
 import { Link, useLocation } from "react-router-dom";
-import { ShoppingCart, Menu, X, Phone, ChevronDown } from "lucide-react";
+import { ShoppingCart, Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import mcLogo from "@/assets/mc-logo.png";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const { totalItems } = useCart();
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
-  const mainLinks = [
+  const allLinks = [
     { to: "/shop", label: "Webáruház" },
     { to: "/partners", label: "Partnerek" },
+    { to: "/catalogs", label: "Katalógusok" },
+    { to: "/videos", label: "Videók" },
     { to: "/about", label: "Rólunk" },
     { to: "/contact", label: "Kapcsolat" },
   ];
-
-  const moreLinks = [
-    { to: "/catalogs", label: "Katalógusok" },
-    { to: "/videos", label: "Videók" },
-  ];
-
-  const allMobileLinks = [...mainLinks, ...moreLinks];
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -48,13 +37,13 @@ const Navbar = () => {
             </div>
           </Link>
 
-          {/* Desktop nav */}
+          {/* Desktop nav - all links visible */}
           <div className="hidden md:flex items-center gap-1">
-            {mainLinks.map((link) => (
+            {allLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                className={`px-2.5 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
                   isActive(link.to)
                     ? "bg-primary/10 text-primary"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted"
@@ -63,20 +52,6 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button className="px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors flex items-center gap-1">
-                  Egyéb <ChevronDown className="h-3.5 w-3.5" />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                {moreLinks.map((link) => (
-                  <DropdownMenuItem key={link.to} asChild>
-                    <Link to={link.to} className="w-full">{link.label}</Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
           </div>
 
           {/* Actions */}
@@ -105,7 +80,7 @@ const Navbar = () => {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden border-t bg-card px-4 py-3 space-y-1 max-h-[70vh] overflow-y-auto">
-          {allMobileLinks.map((link) => (
+          {allLinks.map((link) => (
             <Link
               key={link.to}
               to={link.to}
